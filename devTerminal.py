@@ -22,7 +22,7 @@ class bcolors:
 def devTermMain():
     os.system('clear')
     print("Welcome to the Bear OS Terminal")
-    print("Ver 1.2.3")
+    print("Ver 1.2.4")
     print("(DEVELOPER MODE: ACTIVATED) (ROOT: TRUE)")
     def helpCom():
         os.system('clear')
@@ -30,12 +30,18 @@ def devTermMain():
         Exit: Returns you to menu
         UserInfo: Tells you current user's information
         Root: Allows root terminal access
+        python3: Allows you to run .py files
+        clear: Clears screen
 
         More commands to come with future updates:
         """)
 
     while True:
         bruhVariable = input(f"{bcolors.OKBLUE}Bear OS >>{bcolors.OKGREEN} ")
+
+        pyfile = bruhVariable.endswith(".py")
+
+        m = str(pyfile)
 
         if bruhVariable == "Help":
             os.system('clear')
@@ -68,6 +74,18 @@ def devTermMain():
 
         elif bruhVariable == "Clear":
             os.system('clear')
+        
+        elif bruhVariable == "python3":
+            m = input("What file would you like to run? ")
+            if m.endswith('.py'):
+                os.system(f'python3 {m}')
+            else:
+                print(m + " is not a py file.")
+
+        elif bruhVariable == "restart":
+            print("Restarting...")
+            time.sleep(1)
+            exec(open('BearCMDos.py').read())
 
         else:
             print("The command, " "" + bruhVariable + "" " wasn't found!")

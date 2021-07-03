@@ -1,4 +1,7 @@
 <h1>Update log</h1>
+<ul>Update 1.2.4:
+    <li>[+] Ability to run python files from terminal</li>
+</ul>
 <ul>Update 1.2.3:
     <li>[+] Bug Fixes</li>
     <li>[+] Ability to Restart</li>

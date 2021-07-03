@@ -33,7 +33,7 @@ def homePage():
     l_p = login_pass.read()
     l_n = login_name.read()
     print(f"""{bcolors.OKBLUE}
-    Bear OS v1.2.3
+    Bear OS v1.2.4
     Home page
 
     """)
@@ -128,6 +128,9 @@ def homePage():
     elif select == '7':
         clearDumbScreen()
         print(f"""
+{bcolors.OKBLUE}Update 1.2.4:
+    {bcolors.OKBLUE}[{bcolors.OKCYAN}!{bcolors.OKBLUE}] Terminal Based text editor soon!
+    {bcolors.OKGREEN}[+] You can now run .py files from the terminal
 {bcolors.OKBLUE}Update 1.2.3:
     {bcolors.OKGREEN}[+] Bug Fixes
     [+] Ability to Restart
@@ -187,7 +190,7 @@ def devPage():
     l_p = login_pass.read()
     l_n = login_name.read()
     print(f"""{bcolors.OKBLUE}
-    Bear OS v1.2.3
+    Bear OS v1.2.4
     Home page
     (DEVELOPER MODE: ACTIVATED)
 
@@ -275,6 +278,9 @@ def devPage():
     elif select == '7':
         clearDumbScreen()
         print(f"""
+{bcolors.OKBLUE}Update 1.2.4:
+    {bcolors.OKBLUE}[{bcolors.OKCYAN}!{bcolors.OKBLUE}] Terminal Based text editor soon!
+    {bcolors.OKGREEN}[+] You can now run .py files from the terminal
 {bcolors.OKBLUE}Update 1.2.3:
     {bcolors.OKGREEN}[+] Bug Fixes
     [+] Ability to Restart

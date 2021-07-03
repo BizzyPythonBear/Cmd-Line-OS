@@ -13,7 +13,7 @@ def loginPage():
     l_p = login_pass.read()
     l_n = login_name.read()
     print("""
-    Bear OS v1.2.3
+    Bear OS v1.2.4
     Bear OS Login Screen
     """)
 

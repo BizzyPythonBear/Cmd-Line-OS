@@ -20,13 +20,15 @@ class bcolors:
 def rootTerm():
     os.system('clear')
     print(f"{bcolors.OKCYAN}Welcome to the Bear OS Terminal")
-    print("Ver 1.2.3")
+    print("Ver 1.2.4")
     print("You're in the ROOT terminal, enter command 'exit' to return to menu.")
     def helpCom():
         os.system('clear')
         print("""
         Exit: Returns you to menu
         UserInfo: Tells you current user's information
+        python3: Allows you to run .py files
+        clear: Clears screen
 
         More commands to come with future updates:
         """)
@@ -59,6 +61,13 @@ def rootTerm():
             os.system('clear')
             print("Username: " + l_n)
             print("Password: " + l_p)
+
+        elif bruhVariable == "python3":
+            m = input("What file would you like to run? ")
+            if m.endswith('.py'):
+                os.system(f'python3 {m}')
+            else:
+                print(m + " is not a py file.")
 
         else:
             print("The command, " "" + bruhVariable + "" " wasn't found!")
