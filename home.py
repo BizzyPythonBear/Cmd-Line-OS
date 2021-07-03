@@ -153,6 +153,12 @@ def homePage():
 {bcolors.OKBLUE}--------------------------------------------
 {bcolors.OKBLUE}Full github repository: {bcolors.OKGREEN}https://github.com/BizzyPythonBear/Cmd-Line-OS
 {bcolors.OKBLUE}--------------------------------------------
+{bcolors.OKBLUE}--------------------------------------------
+{bcolors.OKBLUE}Legend:
+{bcolors.OKGREEN}[+] is an Addition
+{bcolors.FAIL}[-] is an issue created by the addition
+{bcolors.OKBLUE}[{bcolors.OKCYAN}!{bcolors.OKBLUE}] Upcoming change/update
+{bcolors.OKBLUE}--------------------------------------------
 {bcolors.FAIL}Press 'e' to exit
         """)
         while True:
@@ -302,6 +308,12 @@ def devPage():
         {bcolors.FAIL}[-] Lots Of Bugs
 {bcolors.OKBLUE}--------------------------------------------
 {bcolors.OKBLUE}Full github repository: {bcolors.OKGREEN}https://github.com/BizzyPythonBear/Cmd-Line-OS
+{bcolors.OKBLUE}--------------------------------------------
+{bcolors.OKBLUE}--------------------------------------------
+{bcolors.OKBLUE}Legend:
+{bcolors.OKGREEN}[+] is an Addition
+{bcolors.FAIL}[-] is an issue created by the addition
+{bcolors.OKBLUE}[{bcolors.OKCYAN}!{bcolors.OKBLUE}] Upcoming change/update
 {bcolors.OKBLUE}--------------------------------------------
 {bcolors.FAIL}Press 'e' to exit
         """)
