@@ -11,7 +11,7 @@ def setupPage():
         f.writelines("1")
 
     print("""
-    Bear OS v0.1.1
+    Bear OS v1.2.3
     Bear OS Registration
     """)
 
