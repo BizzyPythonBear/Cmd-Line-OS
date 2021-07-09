@@ -4,6 +4,13 @@ import os
 import socket
 from os import system
 import sys
+from os import name
+
+
+def error(message):
+	clearScreen()
+	print(f"{bcolors.FAIL}" + message)
+	gameSelect()
 
 class ErrorCodes:
 	Err1 = "Syntax Error (Error Num: 0x0001)"
@@ -12,23 +19,30 @@ class ErrorCodes:
 	Err4 = "Illegal Operation (Error Num: 0x0004)"
 	Err5 = "Not an accessable command (Error Num: 0x0005)"
 
-def errorHandle(message, errorcode):
+def clearScreen():
+    if name == 'nt':
+        _ = system('cls')
+    else:
+        _ = system('clear')
+
+def errorHandle(message, errorcode,):
 	mes = message
 	err = errorcode
 	print(f"{bcolors.FAIL}" + mes + " Error code: " + err)
+    
 
 def setupPage():
     import os
     import time
     from os import system
 
-    system('clear')
+    clearScreen()
 
     with open('data/info.data', 'w') as f:
         f.writelines("1")
 
     print("""
-    Bear OS v1.2.4
+    Bear OS v1.2.6
     Bear OS Registration
     """)
 
@@ -52,14 +66,14 @@ def loginPage():
     import home as H
     from os import system
 
-    system('clear')
+    clearScreen()
 
     login_pass = open('data/password.pass')
     login_name = open('data/username.pass')
     l_p = login_pass.read()
     l_n = login_name.read()
     print("""
-    Bear OS v1.2.4
+    Bear OS v1.2.6
     Bear OS Login Screen
     """)
 
@@ -69,21 +83,21 @@ def loginPage():
         if log == l_p:
             print("Opening Home Page...")
             time.sleep(0.5)
-            system('clear')
+            clearScreen()
             homePage()
             break
 
         elif log == "559907":
             print("Developer Mode Activated...")
             time.sleep(0.5)
-            system('clear')
+            clearScreen()
             devPage()
             break
 
         elif log == "559908":
             print("Taking you to root dev console...")
             time.sleep(0.5)
-            system('clear')
+            clearScreen()
             devTermMain()
             break
 
@@ -110,8 +124,8 @@ def gameSelect():
 		elif fff == 'exit':
 			print("Going back to menu...")
 			time.sleep(1)
-			os.system('clear')
-			devPage()
+			clearScreen()
+			homePage()
 
 
 		else:
@@ -130,11 +144,6 @@ def gameMenu():
 		BOLD = '\033[1m'
 		UNDERLINE = '\033[4m'
 
-	def error(message):
-		os.system('clear')
-		print(f"{bcolors.FAIL}" + message)
-		gameSelect()
-
 	def gameSelect():
 		print(f"{bcolors.WARNING}Type command, 'exit' to leave")
 		print(f"""{bcolors.OKBLUE}
@@ -147,7 +156,7 @@ def gameMenu():
 
 		if fff == '1':
 			snakeGame()
-			os.system('clear')
+			clearScreen()
 		elif fff == '2':
 			error("Game doesn't exist!")
 		elif fff == '3':
@@ -155,7 +164,7 @@ def gameMenu():
 		elif fff == 'exit':
 			print("Going back to menu...")
 			time.sleep(1)
-			os.system('clear')
+			clearScreen()
 			homePage()
 
 		else:
@@ -181,11 +190,11 @@ class bcolors:
     UNDERLINE = '\033[4m'
 
 def terminalMain():
-    os.system('clear')
+    clearScreen()
     print("Welcome to the Bear OS Terminal")
-    print("Ver 1.2.4")
+    print("Ver 1.2.6")
     def helpCom():
-        os.system('clear')
+        clearScreen()
         print("""
         Exit: Returns you to menu
         UserInfo: Tells you current user's information
@@ -200,23 +209,23 @@ def terminalMain():
         bruhVariable = input(f"{bcolors.OKBLUE}Bear OS >>{bcolors.OKGREEN} ")
 
         if bruhVariable == "Help":
-            os.system('clear')
+            clearScreen()
             helpCom()
         elif bruhVariable == "help":
-            os.system('clear')
+            clearScreen()
             helpCom()
 
         elif bruhVariable == "Exit":
-            os.system('clear')
+            clearScreen()
             H.homePage()
             break
         elif bruhVariable == "exit":
-            os.system('clear')
+            clearScreen()
             H.homePage()
             break
 
         elif bruhVariable == "UserInfo":
-            os.system('clear')
+            clearScreen()
             b_login = input(str("Please Enter The Password To " + l_n + " To view this data: "))
             if b_login == l_p:
                 print("Username: " + l_n)
@@ -225,7 +234,7 @@ def terminalMain():
                 print("Wrong password")
 
         elif bruhVariable == "userinfo":
-            os.system('clear')
+            clearScreen()
             b_login = input(str("Please Enter The Password To " + l_n + " To view this data: "))
             if b_login == l_p:
                 print("Username: " + l_n)
@@ -275,10 +284,10 @@ def terminalMain():
                 print("Wrong password!")
 
         elif bruhVariable == "clear":
-            os.system('clear')
+            clearScreen()
 
         elif bruhVariable == "Clear":
-            os.system('clear')
+            clearScreen()
 
         elif bruhVariable == "python3":
             m = input("What file would you like to run? ")
@@ -303,7 +312,7 @@ def gameDevSelect():
 		UNDERLINE = '\033[4m'
 
 	def error(message):
-		os.system('clear')
+		clearScreen()
 		print(f"{bcolors.FAIL}" + message)
 		gameSelect()
 
@@ -320,10 +329,10 @@ class bcolors:
 	UNDERLINE = '\033[4m'
 
 def clearDumbScreen():
-	system("clear")
+	clearScreen()
 
 def error():
-	system('clear')
+	clearScreen()
 	print("This action doesn't exist, or hasn't been implemented yet.")
 	homePage()
 
@@ -333,7 +342,7 @@ def homePage():
 	l_p = login_pass.read()
 	l_n = login_name.read()
 	print(f"""{bcolors.OKBLUE}
-	Bear OS v1.2.4
+	Bear OS v1.2.6
 	Home page
 
 	""")
@@ -360,14 +369,14 @@ def homePage():
 		error()
 
 	elif select == '2':
-		clearDumbScreen()
+		clearScreen()
 		editorMain()
 
 	elif select == '3':
 		error()
 
 	elif select == '4':
-		system('clear')
+		clearScreen()
 		while True:
 			b_login = input(str("Please Enter The Password To " + l_n + " To Open BioS: "))
 			if b_login == l_p:
@@ -400,14 +409,14 @@ def homePage():
 					os.system('exit')
 
 				if edit_b == 'E':
-					os.system('clear')
+					clearScreen()
 					print("Leaving BIOS...")
 					time.sleep(0.5)
 					homePage()
 					break
 
 				if edit_b == 'e':
-					os.system('clear')
+					clearScreen()
 					print("Leaving BIOS...")
 					time.sleep(0.5)
 					homePage()
@@ -429,6 +438,8 @@ def homePage():
 	elif select == '7':
 		clearDumbScreen()
 		print(f"""
+{bcolors.OKBLUE}Update 1.2.6:
+	{bcolors.OKGREEN}[+] Added Command Prompt (Windows) compatability
 {bcolors.OKBLUE}Update 1.2.5:
 	{bcolors.OKGREEN}[+] More Error Codes
 	{bcolors.OKGREEN}[+] Better Error Handler
@@ -469,12 +480,12 @@ def homePage():
 		while True:
 			thing = input("Command: ")
 			if thing == 'e':
-				os.system('clear')
+				clearScreen()
 				homePage()
 				break
 
 			elif thing == 'E':
-				os.system('clear')
+				clearScreen()
 				homePage()
 				break
 			
@@ -506,7 +517,7 @@ def devPage():
 	l_p = login_pass.read()
 	l_n = login_name.read()
 	print(f"""{bcolors.OKBLUE}
-	Bear OS v1.2.4
+	Bear OS v1.2.6
 	Home page
 	(DEVELOPER MODE: ACTIVATED)
 
@@ -532,14 +543,14 @@ def devPage():
 		error()
 
 	elif select == '2':
-		clearDumbScreen()
-		E.editorMain()
+		clearScreen()
+		editorMain()
 
 	elif select == '3':
 		error()
 
 	elif select == '4':
-		system('clear')
+		clearScreen()
 		while True:
 			print("Opening BioS")
 			print("Press enter the command 'e' to exit")
@@ -569,14 +580,14 @@ def devPage():
 				os.system('exit')
 
 			if edit_b == 'E':
-				os.system('clear')
+				clearScreen()
 				print("Leaving BIOS...")
 				time.sleep(0.5)
 				homePage()
 				break
 
 			if edit_b == 'e':
-				os.system('clear')
+				clearScreen()
 				print("Leaving BIOS...")
 				time.sleep(0.5)
 				homePage()
@@ -586,15 +597,17 @@ def devPage():
 				print("You can't change that!")
 
 	elif select == '5':
-		clearDumbScreen()
+		clearScreen()
 		devTermMain()
 
 	elif select == '6':
 		error()
 
 	elif select == '7':
-		clearDumbScreen()
+		clearScreen()
 		print(f"""
+{bcolors.OKBLUE}Update 1.2.6:
+	{bcolors.OKGREEN}[+] Added Command Prompt (Windows) compatability
 {bcolors.OKBLUE}Update 1.2.5:
 	{bcolors.OKGREEN}[+] More Error Codes
 	{bcolors.OKGREEN}[+] Better Error Handler
@@ -635,12 +648,12 @@ def devPage():
 		while True:
 			thing = input("Command: ")
 			if thing == 'e':
-				os.system('clear')
+				clearScreen()
 				devPage()
 				break
 
 			elif thing == 'E':
-				os.system('clear')
+				clearScreen()
 				devPage()
 				break
 			
@@ -660,7 +673,7 @@ def devPage():
 		sys.exit()
 	
 	elif select == '10':
-		clearDumbScreen()
+		clearScreen()
 		gameDevSelect()
 	
 	else:
@@ -765,7 +778,7 @@ def snakeGame():
 	curses.wrapper(main)
 
 def snakeDevGame():
-	os.system('clear')
+	clearScreen()
 	errorHandle("Game doesnt exist!", ErrorCodes.Err3)
 	devPage()
 
@@ -786,12 +799,12 @@ class bcolors:
     UNDERLINE = '\033[4m'
 
 def devTermMain():
-    os.system('clear')
+    clearScreen()
     print("Welcome to the Bear OS Terminal")
-    print("Ver 1.2.4")
+    print("Ver 1.2.6")
     print("(DEVELOPER MODE: ACTIVATED) (ROOT: TRUE)")
     def helpCom():
-        os.system('clear')
+        clearScreen()
         print("""
         Exit: Returns you to menu
         UserInfo: Tells you current user's information
@@ -810,36 +823,36 @@ def devTermMain():
         m = str(pyfile)
 
         if bruhVariable == "Help":
-            os.system('clear')
+            clearScreen()
             helpCom()
         elif bruhVariable == "help":
-            os.system('clear')
+            clearScreen()
             helpCom()
 
         elif bruhVariable == "Exit":
-            os.system('clear')
+            clearScreen()
             devPage()
             break
         elif bruhVariable == "exit":
-            os.system('clear')
+            clearScreen()
             devPage()
             break
 
         elif bruhVariable == "UserInfo":
-            os.system('clear')
+            clearScreen()
             print("Username: " + l_n)
             print("Password: " + l_p)
 
         elif bruhVariable == "userinfo":
-            os.system('clear')
+            clearScreen()
             print("Username: " + l_n)
             print("Password: " + l_p)
 
         elif bruhVariable == "clear":
-            os.system('clear')
+            clearScreen()
 
         elif bruhVariable == "Clear":
-            os.system('clear')
+            clearScreen()
         
         elif bruhVariable == "python3":
             m = input("What file would you like to run? ")
@@ -875,12 +888,12 @@ class bcolors:
     UNDERLINE = '\033[4m'
 
 def rootTerm():
-    os.system('clear')
+    clearScreen()
     print(f"{bcolors.OKCYAN}Welcome to the Bear OS Terminal")
-    print("Ver 1.2.4")
+    print("Ver 1.2.6")
     print("You're in the ROOT terminal, enter command 'exit' to return to menu.")
     def helpCom():
-        os.system('clear')
+        clearScreen()
         print("""
         Exit: Returns you to menu
         UserInfo: Tells you current user's information
@@ -894,28 +907,28 @@ def rootTerm():
         bruhVariable = input(f"(ROOT) Bear OS >> {bcolors.OKGREEN}")
         print(f"{bcolors.OKCYAN}")
         if bruhVariable == "Help":
-            os.system('clear')
+            clearScreen()
             helpCom()
         elif bruhVariable == "help":
-            os.system('clear')
+            clearScreen()
             helpCom()
 
         if bruhVariable == "Exit":
-            os.system('clear')
+            clearScreen()
             H.homePage()
             break
         elif bruhVariable == "exit":
-            os.system('clear')
+            clearScreen()
             H.homePage()
             break
 
         if bruhVariable == "UserInfo":
-            os.system('clear')
+            clearScreen()
             print("Username: " + l_n)
             print("Password: " + l_p)
 
         elif bruhVariable == "userinfo":
-            os.system('clear')
+            clearScreen()
             print("Username: " + l_n)
             print("Password: " + l_p)
 
@@ -1179,4 +1192,4 @@ def editorMain():
   # Root Window Looping
   root.mainloop()
 
-clearDumbScreen()
+clearScreen()
